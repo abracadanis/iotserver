@@ -1,0 +1,22 @@
+spring:
+  # ===============================
+  # = JPA / HIBERNATE
+  # ===============================
+  datasource:
+    url: jdbc:postgresql://localhost:5432/app
+    username: app
+    password: app
+    hikari:
+      maximum-pool-size: 5
+  jpa:
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: false
+        enable_lazy_load_no_trans: true
+        jdbc:
+          lob:
+            non_contextual_creation: true
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
