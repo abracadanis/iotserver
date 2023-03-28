@@ -1,8 +1,9 @@
 CREATE SEQUENCE IF NOT EXISTS seq START WITH 1 INCREMENT BY 1;
 
-CREATE TABLE device (
-    id BIGINT NOT NULL,
-    key VARCHAR(255),
-    value BOOLEAN,
+CREATE TABLE device
+(
+    id      BIGINT NOT NULL,
+    key     VARCHAR(255) NOT NULL,
+    value   BOOLEAN NOT NULL,
     CONSTRAINT pk_device PRIMARY KEY(id)
-)
+);

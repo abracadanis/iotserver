@@ -1,5 +1,3 @@
-version: "3.9"
-
 services:
   postgres:
     image: postgres:14-alpine
@@ -14,4 +12,15 @@ services:
       timeout: 5s
       retries: 10
     volumes:
-      - data:/var/lib/postgresql
+      - ./init/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - postgres-data:/var/lib/postgresql/data
+
+  server:
+    image: server/demo:latest
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/iotserver
+      SPRING_DATASOURCE_USERNAME: app
+      SPRING_DATASOURCE_PASSWORD: app
+
+volumes:
+  postgres-data:

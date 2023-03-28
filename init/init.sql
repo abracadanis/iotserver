@@ -1,0 +1,2 @@
+CREATE DATABASE iotserver;
+GRANT ALL PRIVILEGES ON DATABASE iotserver TO app;

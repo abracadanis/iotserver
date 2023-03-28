@@ -1,22 +1,26 @@
+logging:
+  level:
+    com.example.demo: DEBUG
+
+server:
+  port: 8080
+  servlet:
+    context-path: /api/server
+
 spring:
-  # ===============================
-  # = JPA / HIBERNATE
-  # ===============================
   datasource:
-    url: jdbc:postgresql://localhost:5432/app
+    url: jdbc:postgresql://localhost:5432/iotserver
     username: app
     password: app
-    hikari:
-      maximum-pool-size: 5
+    driver-class-name: org.postgresql.Driver
+    dbcp2:
+      test-while-idle: true
+      validation-query: SELECT 1
   jpa:
-    show-sql: false
+    show-sql: true
+    hibernate:
+      ddl-auto: create
     properties:
       hibernate:
-        format_sql: false
-        enable_lazy_load_no_trans: true
-        jdbc:
-          lob:
-            non_contextual_creation: true
-    open-in-view: false
-    hibernate:
-      ddl-auto: validate
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    generate-ddl: true
