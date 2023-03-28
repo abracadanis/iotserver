@@ -17,10 +17,15 @@ services:
 
   server:
     image: server/demo:latest
+    ports:
+      - "8180:8180"
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/iotserver
       SPRING_DATASOURCE_USERNAME: app
       SPRING_DATASOURCE_PASSWORD: app
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
 
 volumes:
   postgres-data:
