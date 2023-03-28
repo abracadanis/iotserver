@@ -9,7 +9,7 @@ public class Device {
     @Id
     @Column(name = "id")
     @GeneratedValue(generator = "generator")
-    private Long id;
+    private long id;
 
     @Column(name = "key")
     private String key;
