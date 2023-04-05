@@ -4,7 +4,9 @@ import com.example.demo.domain.Device;
 import com.example.demo.repo.DeviceRepository;
 import com.example.demo.service.so.DeviceSo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 @Service
 public class DeviceService {
@@ -23,9 +25,11 @@ public class DeviceService {
         return deviceRepository.save(device);
     }
 
-    public Device getByKey(String key) {
-        return deviceRepository.findByKey(key)
-                .orElseThrow();
+    public ResponseEntity<String> getByKey(String key) {
+        RestTemplate restTemplate = new RestTemplate();
+        String fooResourceUrl = "http://192.168.0.109:80/";
+        ResponseEntity<String> response = restTemplate.getForEntity(fooResourceUrl + key, String.class);
+        return response;
     }
 
     public Device updateByKey(String key) {
