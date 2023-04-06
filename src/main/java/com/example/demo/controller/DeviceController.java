@@ -4,6 +4,7 @@ import com.example.demo.domain.Device;
 import com.example.demo.service.DeviceService;
 import com.example.demo.service.so.DeviceSo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,7 +29,7 @@ public class DeviceController {
     }
 
     @GetMapping("/{key}")
-    public Device getByKey(@PathVariable("key") String key) {
+    public ResponseEntity<String> getByKey(@PathVariable("key") String key) {
         return deviceService.getByKey(key);
     }
 
