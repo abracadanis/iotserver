@@ -26,9 +26,12 @@ public class DeviceService {
     }
 
     public ResponseEntity<String> getByKey(String key) {
+        // Send request to AdafruitIO
         RestTemplate restTemplate = new RestTemplate();
-        String fooResourceUrl = "http://192.168.0.109:80/";
-        ResponseEntity<String> response = restTemplate.getForEntity(fooResourceUrl + key, String.class);
+        String AdafruitIOUrl = "https://io.adafruit.com/api/v2/abrcdns/feeds?x-aio-key=aio_qwVe65OAef4OjOARe4OqJ4FqGTqn";
+        ResponseEntity<String> response = restTemplate.getForEntity(AdafruitIOUrl, String.class);
+
+        String espUrl = "http://192.168.0.109:80";
         return response;
     }
 
